@@ -1,0 +1,69 @@
+CREATE TABLE  artykul (
+id_a INT (5) NOT NULL AUTO_INCREMENT,
+PRIMARY KEY (id_A),
+ean_a INT (9),
+polka_a INT (3),
+regal_a INT (3),
+ilosc_a INT (4),
+nazwa_a VARCHAR (40),
+jm_a VARCHAR (10)
+);
+
+CREATE TABLE  kontrachent (
+id_k INT(4) NOT NULL AUTO_INCREMENT,
+PRIMARY KEY(id_k),
+nip_k INT(12),
+regon_k INT(12),
+nazwa_k VARCHAR(100),
+miasto_k VARCHAR (20),
+kod_k VARCHAR (6),
+ulica_k VARCHAR (20),
+nr_domu_k INT(3),
+nr_lok_k INT(3)
+);
+
+CREATE TABLE dostawca (
+id_d INT(4) NOT NULL AUTO_INCREMENT,
+PRIMARY KEY(id_d),
+nazwa_d varchar (30),
+nip_d INT(12),
+miasto_k VARCHAR (20),
+kod_d VARCHAR (6),
+ulica_d VARCHAR (20),
+nr_domu_d INT(3),
+nr_lok_d INT(3)
+);
+
+CREATE TABLE  pz (
+id_p INT(4) NOT NULL AUTO_INCREMENT,
+PRIMARY KEY(id_p),
+od_kogo_p INT(12),
+FOREIGN KEY (od_kogo_p) REFERENCES dostawca(nip_d)
+przedmiot_p INT(9),
+FOREIGN KEY (przedmiot_p) REFERENCES artykul(ean_a),
+ilosc_p INT(4),
+nr_dok_p INT (5)
+);
+
+CREATE TABLE  wz (
+id_w INT(4) NOT NULL AUTO_INCREMENT,
+PRIMARY KEY(id_w),
+do_kogo_w INT(12),
+FOREIGN KEY (do_kogo_w) REFERENCES kontrachent(nip_k),
+przedmiot_w INT(9),
+FOREIGN KEY (przedmiot_w) REFERENCES artykul(ean_a),
+ilosc_w INT(3),
+nr_dok_w INT (5)
+);
+
+CREATE TABLE  zamowienie (
+id_z INT(5) NOT NULL AUTO_INCREMENT,
+PRIMARY KEY(id_z),
+dla_kogo_z INT (12),
+FOREIGN KEY (dla_kogo_z) REFERENCES kontrachent(nip_k),
+artykul_z INT(9),
+FOREIGN KEY (artykul_z) REFERENCES artykul(ean_a),
+data_z DATE,
+liczba_z INT (3),
+nr_dok_z INT (5)
+);

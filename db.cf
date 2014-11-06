@@ -1,0 +1,4 @@
+adres jdbc:mysql://localhost:3306
+baza test
+user root
+haslo root

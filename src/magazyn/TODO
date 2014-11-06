@@ -1,0 +1,20 @@
+1. poprawic GUI - dodac ograniczenia wielkosci pol (np nip tylko 9 znakow), uniemozliwic
+    wpisywanie w polu output
+
+2. DODAC KOMENTARZE JAVADOC!!
+
+4. tabela laczaca pozycje z WZ/PZ z zamowieniem. scala pozycje dokumentu
+
+
+@author
+@deprecated
+@execution
+@param
+@return
+@see
+@serial
+@serialData
+@serialField
+@since
+@throws
+@version

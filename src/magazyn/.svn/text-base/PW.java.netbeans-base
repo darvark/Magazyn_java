@@ -1,0 +1,59 @@
+/*
+ * zarzadznie PW
+ */
+package magazyn;
+
+import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+/**
+ *
+ * @author Grzegorz Bak
+ * @author Tomasz Gwalt
+ * @author Marcin Iwaniuk
+ */
+public class PW {
+/* co, gdzie jedzie, ile
+ * dodaje nowe stany do magazynu
+ */
+    String od_kogo;
+    String do_kogo;
+    int przedmiot;
+    int ilosc;
+
+    PW ()
+    {
+        od_kogo = "";
+        do_kogo = "";
+        przedmiot = 000000000;
+        ilosc = 0;
+    }
+
+    public void dodaj_pw(String od_kogo, String do_kogo, int EAN, int ilosc)
+    {
+        try
+        {
+            Connection conn = DriverManager.getConnection(DataBase.url, DataBase.login, DataBase.password);
+            Statement st = conn.createStatement();
+            try
+            {
+                st.execute("USE projekt");
+                st.executeUpdate("INSERT pw (od_kogo, do_kogo, ean, ilosc) VALUES ('"+od_kogo+"' , '"+do_kogo+"', '"+EAN+"', '"+ilosc+"')");
+                System.out.println("Rekord zostal utworzony");
+            }
+            catch (SQLException e)
+            {
+                System.out.println("Uwaga! Rekord juz istnieje "+e);
+            }
+        }
+        catch (SQLException f)
+        {
+            System.out.println("Uwaga! Mamy problemy z polaczeniem! "+f);
+        }
+
+    }
+}

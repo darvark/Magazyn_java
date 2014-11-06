@@ -1,0 +1,44 @@
+/*
+ * okresla i zawiera informacje o lokalizacji artykulu
+ * w magazynie: regal/polka
+ */
+package magazyn;
+
+/**
+ *
+ * @author Grzegorz Bak
+ * @author Tomasz Gwalt
+ * @author Marcin Iwaniuk
+ */
+public class Miejsce {
+
+    public int regal;
+    public int polka;
+
+    Miejsce()//kontruktor
+    {
+        regal = 0;
+        polka = 0;
+    }
+
+    public void set_regal(int numer_regalu)
+    {
+        regal = numer_regalu;
+    };
+
+    public void set_polka(int numer_polki)
+    {
+        polka = numer_polki;
+    };
+
+    public int get_regal()
+    {
+        return regal;
+    }
+
+    public int get_polka()
+    {
+        return polka;
+    }
+    //end of class
+}
